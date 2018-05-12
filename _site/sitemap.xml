@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>/blog</loc>
+    </url>
+    
+    
+    <url>
+        <loc>/blog/404</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/about/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/categories/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/featured/</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/feed.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/links.jsonp</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/search.json</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/sitemap.xml</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/tags/index.html</loc>
+    </url>
+    
+
+    
+    <url>
+        <loc>/blog/linux/linux-commands-1</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/webdevelopment/why-jekyll</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/personal/introducing-notepad</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/theme/documentation</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/theme/readability-feature-post</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/articles/readability-post</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/articles/theme-elements</loc>
+    </url>
+    
+</urlset>
