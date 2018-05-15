@@ -1,37 +1,7 @@
 callback([
 
   {
-    "text": "Theme Elements",
-    "href": "/blog/articles/theme-elements"
-  } ,
-
-  {
-    "text": "Testing Readability with a Bunch of Text",
-    "href": "/blog/articles/readability-post"
-  } ,
-
-  {
-    "text": "Post with Cover Image and Text",
-    "href": "/blog/theme/readability-feature-post"
-  } ,
-
-  {
-    "text": "Documentation",
-    "href": "/blog/theme/documentation"
-  } ,
-
-  {
-    "text": "Introducing Notepad",
-    "href": "/blog/personal/introducing-notepad"
-  } ,
-
-  {
-    "text": "Why Jekyll?",
-    "href": "/blog/webdevelopment/why-jekyll"
-  } ,
-
-  {
-    "text": "Linux Commands (Basics)",
+    "text": "Linux Directory Structure",
     "href": "/blog/linux/linux-commands-1"
   } 
 

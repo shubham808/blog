@@ -3,22 +3,22 @@
 
 <head>
 <meta charset="utf-8">
-<title>LINUX COMMANDS (BASICS) &vert; RAVEN</title>
-<meta name="description" content="A guide for noobs to learn terminal commands on a Unix system">
-<meta name="keywords" content="sample post">
+<title>LINUX DIRECTORY STRUCTURE &vert; RAVEN</title>
+<meta name="description" content="The meaning and uses of all the directories in the Linux system">
+<meta name="keywords" content="">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/blog/images/logo.png">
-<meta name="twitter:title" content="Linux Commands (Basics)">
-<meta name="twitter:description" content="A guide for noobs to learn terminal commands on a Unix system">
+<meta name="twitter:title" content="Linux Directory Structure">
+<meta name="twitter:description" content="The meaning and uses of all the directories in the Linux system">
 <meta name="twitter:creator" content="@saloni_kumar26">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux Commands (Basics)">
-<meta property="og:description" content="A guide for noobs to learn terminal commands on a Unix system">
+<meta property="og:title" content="Linux Directory Structure">
+<meta property="og:description" content="The meaning and uses of all the directories in the Linux system">
 <meta property="og:url" content="/blog/linux/linux-commands-1">
 <meta property="og:site_name" content="RAVEN">
 <meta property="og:image" content="/blog/images/">
@@ -109,67 +109,82 @@
                 <div class="notepad-post-title-simple row">
                     <div class="small-12 columns">
                         <div class="notepad-post-meta-simple">
-                            <h1>Linux Commands (Basics)</h1>
-                            <p>by <strong>Saloni Rajeev Kumar</strong> &#8212; on <a href="/blog/tags/index.html#sample post" data-toggle="tooltip" title="Posts tagged with sample post" rel="tag">sample post</a> <strong><time datetime="2018-05-12T00:00:00+00:00">12 May 2018</time></strong></p>
+                            <h1>Linux Directory Structure</h1>
+                            <p>by <strong>Saloni Rajeev Kumar</strong> &#8212;  <strong><time datetime="2018-05-12T00:00:00+00:00">12 May 2018</time></strong></p>
                         </div>
                     </div>
                 </div>
             </header>
 
         <article class="notepad-post-content post tag-simple">
-            <div><p>The knowledge of linux is a basic requirement for an IT professional. This is so because Linux is an easy medium to understand the
-basic functioning of how an operating system works. This blog assumes that you have prior experience of using a Windows operating system.</p>
+            <div><p>Linux is a free open source operating system that you can make changes to and redistribute. It is easy for understanding the working of a typical operating system. In this series we shall first look at the directory structure.</p>
 
-<p>In this tutorial we will look at the basics of files and directory structures.</p>
+<h3 id="linux-terminal">Linux Terminal</h3>
 
-<h3 id="the-directory-structure">The directory structure</h3>
+<p>The terminal is a program that recieves command from the user and gives it to the OS to process, and it shows the output. It is similar to <code class="highlighter-rouge">command prompt</code> in Windows. Majority of the tasks undertaken on Linux are through its terminal window.
+Shortcut to open a terminal window is: Ctrl+Alt+T</p>
 
-<p>The diretory structure used by the UNIX-based OS are the same as Windows OS.</p>
+<h3 id="understanding-the-structure">Understanding the Structure</h3>
 
-<h4 id="heading-4">Heading 4</h4>
+<p>The Filesystem Hierarchy Standard <img src="http://www.pathname.com/fhs/pub/fhs-2.3.html" alt="FHS" /> defines the structure of file systems on Linux and other UNIX-like operating systems. We shall be looking at the file structure of Ubuntu 16.04. (I have personalised my version a bit, hence the different appearance.)</p>
 
-<h5 id="heading-5">Heading 5</h5>
-
-<h6 id="heading-6">Heading 6</h6>
-
-<h3 id="body-text">Body text</h3>
-
-<p>Lorem ipsum dolor sit amet, test link adipiscing elit. <strong>This is strong</strong>. Nullam dignissim convallis est. Quisque aliquam.</p>
-
-<p><em>This is emphasized</em>. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H<sub>2</sub>O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times <cite>(That’s a citation)</cite>. <u>Underline</u>. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.</p>
-
-<p>HTML and <abbr title="cascading stylesheets">CSS<abbr> are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.</abbr></abbr></p>
-
-<h3 id="blockquotes">Blockquotes</h3>
-
-<blockquote>
-  <p>Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam.</p>
-</blockquote>
-
-<h2 id="list-types">List Types</h2>
-
-<h3 id="ordered-lists">Ordered Lists</h3>
+<p><img src="path" alt="directory.png" /></p>
 
 <ol>
-  <li>Item one
-    <ol>
-      <li>sub item one</li>
-      <li>sub item two</li>
-      <li>sub item three</li>
-    </ol>
+  <li>
+    <p><strong>/ : the root Directory:</strong>
+This is similar to the C:\ directory on Windows in function. It contains all the folders with system information in it. Every single file and directory has a path beginning from root directory i.e. path of folder bin is <code class="highlighter-rouge">/bin</code>. Only the root user has the privilege to modify files in this directory i.e. use <code class="highlighter-rouge">sudo</code>.</p>
   </li>
-  <li>Item two</li>
+  <li>
+    <p><strong>/bin : essential user binaries:</strong>
+ It contains all the programs(binaries) that must be present when the system is mounted in single-user mode.</p>
+  </li>
 </ol>
 
-<h3 id="unordered-lists">Unordered Lists</h3>
+<p><img src="path" alt="/bin.jpg" /></p>
+
+<p>Commands used by all the users are located here (eg. chmod, cp, bash, ls)
+ Applications such as Firefox are stored in <code class="highlighter-rouge">/usr/bin</code>
+ A similar directory, <code class="highlighter-rouge">/sbin</code> contains essential system administration binaries (eg iptables, ifconfig, fdisk, reboot)</p>
+
+<ol>
+  <li><strong>/boot : static boot files:</strong>
+It contains boot loader related files like GRUB files and Linux kernels i.e. the files needed to boot the system. The boot loader’s configuration files are located in <code class="highlighter-rouge">/etc</code> which stores configuration files which we shall see further.</li>
+</ol>
+
+<p><img src="path" alt="/boot.jpg" /></p>
 
 <ul>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
+  <li>kernel files: initrd.img-*</li>
+  <li>grub files: inside grub folder</li>
+  <li>vmlinux: vmlinuz-*</li>
 </ul>
 
-<h2 id="tables">Tables</h2>
+<ol>
+  <li>
+    <p><strong>/cdrom : historical mount point for CD-ROMs:</strong>
+It isn’t part of FHS standard, yet finds its way into Ubuntu and other distributions. It is a temporary location for CD-ROMs inserted in the system.
+Standard location for <em>all</em> temporary media is in <code class="highlighter-rouge">/media</code> directory.</p>
+  </li>
+  <li><strong>/dev : device files:</strong></li>
+  <li><strong>/etc : configuration files:</strong></li>
+  <li><strong>/home :files:</strong></li>
+  <li><strong>/lib :files:</strong></li>
+  <li><strong>/lost+found :files:</strong></li>
+  <li><strong>/media :files:</strong></li>
+  <li><strong>/mnt :files:</strong></li>
+  <li><strong>/opt :files:</strong></li>
+  <li><strong>/proc :files:</strong></li>
+  <li><strong>/root :files:</strong></li>
+  <li><strong>/run :files:</strong></li>
+  <li><strong>/sbin :files:</strong></li>
+  <li><strong>/srv :files:</strong></li>
+  <li><strong>/tmp :files:</strong></li>
+  <li><strong>/usr :files:</strong></li>
+  <li><strong>/var :files:</strong></li>
+</ol>
+
+<!-- ## Tables
 
 <div class="row">
     <div class="large-12 columns">
@@ -204,11 +219,12 @@ basic functioning of how an operating system works. This blog assumes that you h
   </tbody>
 </table>
     </div>
-</div>
+</div> -->
 
-<h2 id="code-snippets">Code Snippets</h2>
+<!-- ## Code Snippets
 
-<p>Syntax highlighting via Pygments</p>
+Syntax highlighting via Pygments
+
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#container</span> <span class="p">{</span>
   <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
@@ -216,18 +232,19 @@ basic functioning of how an operating system works. This blog assumes that you h
   <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="buttons">Buttons</h2>
 
-<p>Make any link standout more when applying the <code class="highlighter-rouge">button</code> class.</p>
+## Buttons
 
-<p><a href="#" class="button">Default Button</a></p>
+Make any link standout more when applying the `button` class.
+
+<a href="#" class="button">Default Button</a> -->
 
             </div>
         </article>
         <div class="cf"></div>
         <div class="row text-center">
             <section class="notepad-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Linux Commands (Basics)&quot;%20/blog/linux/linux-commands-1%20via%20&#64;saloni_kumar26"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Linux Directory Structure&quot;%20/blog/linux/linux-commands-1%20via%20&#64;saloni_kumar26"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
