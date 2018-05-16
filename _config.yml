@@ -71,8 +71,8 @@ kramdown:
 
 prose:
   rooturl: '_posts'
-  siteurl: 'http://salonirk11.github.io/blog'
-  relativeLinks: 'http://salonirk11.github.io/blog/links.jsonp'
+  siteurl: 'https://github.com/salonirk11/blog'
+  relativeLinks: 'https://github.com/salonirk11/blog/links.jsonp'
   media: 'images'
   metadata:
     _posts:
