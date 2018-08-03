@@ -25,18 +25,19 @@ The ```CStoppableSGObject``` inherits from ```CSGObject```. It has all the membe
 Apart from the already present components of premature stopping framework, we introduced a new way to cancel computation of a machine. This will make testing easier and understandable. 
 - ```m_callback```: It is a ```std::function<bool>``` which can call ```cancel_computation()``` along with generating block signal from the ```global_signal_handler```.
 An example of callback is:
-```C++
-		function<bool()> callback = [this]() 
-        {
-			// Stop if we did more than 5 steps
-			if (m_last_iteration >= 5)
-			{
-				get_global_signal()->get_subscriber()->on_next(SG_BLOCK_COMP);
-				return true;
-			}
-			m_last_iteration++;
-			return false;
-		};
+```
+C++
+function<bool()> callback = [this]() 
+    {
+	// Stop if we did more than 5 steps
+	if (m_last_iteration >= 5)
+	{
+		get_global_signal()->get_subscriber()->on_next(SG_BLOCK_COMP);
+		return true;
+	}
+	m_last_iteration++;
+	return false;
+};
 ```
 - ```set_callback```: setter for ```m_callback```.
 

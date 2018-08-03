@@ -19,37 +19,37 @@ Least Angle Regression is an Iterative Algorithm that tries to stay type indepen
 
 ### Implementation details and Design choice:
 
-```CDenseRealDispatch``` is a class to dispatch dense feature types in ```FeatureDispatchCRTP.h```. It is a mixin class that takes two template arguments. The first argument is the class itself and the second argument is the orignal base class. This is possible due to the concept of Curiously Recursive Template Pattern(```CRTP```). ```C++``` is lazy, this means a pointer for a class is available to use even *before*  it is declared. In other words, a call to a member method of such a class does not need to be instantiated until the function is actually *called*.
-Classes(like ```CLDA```, ```CLeastAngleRegression```) which support dynamic dispatching via the mixin will inherit from 
-```CDenseRealDispatch<CMockModel, CBaseMachine>``` instead of directly inheriting from ```CBaseMachine```.
+The ```CDenseRealDispatch``` is a class to dispatch dense feature types in ```FeatureDispatchCRTP.h```. It is a mixin class that takes two template arguments. The first argument is the class itself and the second argument is the orignal base class. This is possible due to the concept of Curiously Recursive Template Pattern(```CRTP```). ```C++``` is lazy, this means a pointer for a class is available to use even *before*  it is declared. In other words, a call to a member method of such a class does not need to be instantiated until the function is actually *called*.
+Classes(like ```CLDA```, ```CLeastAngleRegression```) which support dynamic dispatching via the mixin will inherit from ```CDenseRealDispatch<CMockModel, CBaseMachine>``` instead of directly inheriting from ```CBaseMachine```.
 
 ##### Methods:
 - ```train_dense```: Virtual, the method is written in ```CDenseRealDispatch``` called if the feature class of data pointer is ```C_DENSE```. In the dispatcher this calls ```train_machine_templated``` of model with appropriate type.
-```C++
-		virtual bool train_dense(CFeatures* data)
-		{
-			auto this_casted = this->template as<P>();
-			switch (data->get_feature_type())
-			{
-			case F_DREAL:
-				return this_casted->template train_machine_templated<float64_t>(
-				    data->as<CDenseFeatures<float64_t>>());
-			case F_SHORTREAL:
-				return this_casted->template train_machine_templated<float32_t>(
-				    data->as<CDenseFeatures<float32_t>>());
-			case F_LONGREAL:
-				return this_casted
-				    ->template train_machine_templated<floatmax_t>(
-				        data->as<CDenseFeatures<floatmax_t>>());
-			default:
-				SG_SERROR(
-				    "Training with %s of provided type %s is not "
-				    "possible!",
-				    data->get_name(),
-				    feature_type(data->get_feature_type()).c_str());
-			}
-			return false;
-		}
+```
+C++
+virtual bool train_dense(CFeatures* data)
+{
+	auto this_casted = this->template as<P>();
+	switch (data->get_feature_type())
+	{
+	case F_DREAL:
+		return this_casted->template train_machine_templated<float64_t>(
+		    data->as<CDenseFeatures<float64_t>>());
+	case F_SHORTREAL:
+		return this_casted->template train_machine_templated<float32_t>(
+		    data->as<CDenseFeatures<float32_t>>());
+	case F_LONGREAL:
+		return this_casted
+		    ->template train_machine_templated<floatmax_t>(
+		        data->as<CDenseFeatures<floatmax_t>>());
+	default:
+		SG_SERROR(
+		    "Training with %s of provided type %s is not "
+		    "possible!",
+		    data->get_name(),
+		    feature_type(data->get_feature_type()).c_str());
+	}
+	return false;
+}
 ```
 - ```train_string```: Virtual, this is similar to ```train_dense``` but it dispatches string types like ```uint8_t```, ```char```.
 - ```train_machine_templated```: This is a templated version of ```train_machine``` written in subclass. It is called with appropriate parameter by the dispatcher.
@@ -61,7 +61,8 @@ There is also an added detail that any class that implements feature type dispat
 ### Example and Tests:
 A cookbook of how to use a class that supports dispatching is [here]().
 The tests for dynamic dispatch use a fake model that returns *true* when a particular feature type is passed. The feature type is provided in constructor.
-```C++
+```
+C++
 class CDenseRealMockMachine
     : public CDenseRealDispatch<CDenseRealMockMachine, CMachine>
 {
@@ -99,7 +100,8 @@ To implement dense dispatching in more algorithm we can make the following chang
 + class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
 ```
 - Make the class a friend of the Dispatcher. This is done to bring ```train_machine_templated``` into the dispatcher's scope.
-```C++
+```
+C++
 friend class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
 ```
 The idea is similar for ```CStringFeaturesDispatch```.
