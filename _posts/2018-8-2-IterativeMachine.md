@@ -32,8 +32,9 @@ The ```CIterativeMachine``` is a mixin class. This means it can inherit from som
 
 ### Example:
 Below is a cpp example of a fake iterative model. 
-```
-C++
+
+
+{% highlight C++ %}
 #include <shogun/base/init.h>
 #include <shogun/base/some.h>
 #include <shogun/labels/BinaryLabels.h>
@@ -85,14 +86,14 @@ int main()
 	a.train();
     /* Press CTRL+C before training is complete. Another way to stop training 
     is to pass a callback that will trigger can trigger a signal.
-    */
+    \*/
     // Here you can use the pre-trained model. For example we can apply on test data, serialize the model etc.
     cout<<"Resuming Training"<<endl;
     a.continue_train();
 
 	return 0;
 }
-```
+{% endhighlight %}
 
 There are two ways to Prematurely stop an algorithm. The user can press ```CTRL+C``` or the user can write a callback method that will trigger a signal. For more details on second method see [this patch](https://github.com/shogun-toolbox/shogun/pull/4293). From python the code will look like:
 

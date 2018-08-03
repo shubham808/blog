@@ -25,8 +25,8 @@ The ```CStoppableSGObject``` inherits from ```CSGObject```. It has all the membe
 Apart from the already present components of premature stopping framework, we introduced a new way to cancel computation of a machine. This will make testing easier and understandable. 
 - ```m_callback```: It is a ```std::function<bool>``` which can call ```cancel_computation()``` along with generating block signal from the ```global_signal_handler```.
 An example of callback is:
-```
-C++
+
+{% highlight C++ %}
 function<bool()> callback = [this]() 
     {
 	// Stop if we did more than 5 steps
@@ -38,7 +38,8 @@ function<bool()> callback = [this]()
 	m_last_iteration++;
 	return false;
 };
-```
+{% endhighlight %}
+
 - ```set_callback```: setter for ```m_callback```.
 
 ### Some Thoughts:
@@ -58,9 +59,11 @@ The new, smooth progress bar looks like:
 to use it in a new algorithm we can make the following changes:
 - Identify a candidate loop that will need the progress bar.
 - Use the macro in the begining of the loop.
-```C++
+
+{% highlight C++ %}
 for (auto e : SG_PROGRESS(range(epochs)))
-```
+{% endhighlight %}
+
 All ```CIterativeMachine``` will automatically have a progress bar since we apply it in ```continue_train()```
 
 ### Future Work:

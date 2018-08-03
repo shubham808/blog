@@ -24,8 +24,9 @@ Classes(like ```CLDA```, ```CLeastAngleRegression```) which support dynamic disp
 
 ##### Methods:
 - ```train_dense```: Virtual, the method is written in ```CDenseRealDispatch``` called if the feature class of data pointer is ```C_DENSE```. In the dispatcher this calls ```train_machine_templated``` of model with appropriate type.
-```
-C++
+
+
+{% highlight C++ %}
 virtual bool train_dense(CFeatures* data)
 {
 	auto this_casted = this->template as<P>();
@@ -50,7 +51,9 @@ virtual bool train_dense(CFeatures* data)
 	}
 	return false;
 }
-```
+{% endhighlight %}
+
+
 - ```train_string```: Virtual, this is similar to ```train_dense``` but it dispatches string types like ```uint8_t```, ```char```.
 - ```train_machine_templated```: This is a templated version of ```train_machine``` written in subclass. It is called with appropriate parameter by the dispatcher.
 
@@ -61,8 +64,9 @@ There is also an added detail that any class that implements feature type dispat
 ### Example and Tests:
 A cookbook of how to use a class that supports dispatching is [here]().
 The tests for dynamic dispatch use a fake model that returns *true* when a particular feature type is passed. The feature type is provided in constructor.
-```
-C++
+
+
+{% highlight C++ %}
 class CDenseRealMockMachine
     : public CDenseRealDispatch<CDenseRealMockMachine, CMachine>
 {
@@ -89,7 +93,9 @@ public:
 
 	EFeatureType m_expected_feature_type;
 };
-```
+{% endhighlight %}
+
+
 This is then tested with a few feature types for each dispatcher. 
 ### Applying Dispatchers to more Classes:
 To implement dense dispatching in more algorithm we can make the following changes:
@@ -100,10 +106,11 @@ To implement dense dispatching in more algorithm we can make the following chang
 + class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
 ```
 - Make the class a friend of the Dispatcher. This is done to bring ```train_machine_templated``` into the dispatcher's scope.
-```
-C++
+
+{% highlight C++ %}
 friend class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
-```
+{% endhighlight %}
+
 The idea is similar for ```CStringFeaturesDispatch```.
 And you are all set with a fully templated model.
 
