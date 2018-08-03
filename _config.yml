@@ -111,13 +111,21 @@ prose:
           element: "multiselect"
           label: "Add categories"
           placeholder: "Choose categories"
-          value: blog
+          value: personal
           options:
-            - name: "Weekly updates"
-              value: weekly_updates
-            - name: "Blog"
-              value: blog
-           alterable: true
+            - name: "Personal"
+              value: personal
+            - name: "Linux"
+              value: linux
+            - name: "Machine Learning"
+              value: machinelearning
+            - name: "Deep Learning"
+              value: deeplearning
+            - name: "Python"
+              value: python
+            - name: "Raspberries"
+              value: raspberries
+          alterable: true
       - name: "tags"
         field:
           element: "text"
