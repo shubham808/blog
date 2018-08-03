@@ -12,7 +12,6 @@ url:        	  /blog
 # Owner/author information
 owner:
   name:           Shubham Shukla
-  avatar:         me.jpg
   email:          shubhamshukla1197@gmail.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Enthusiastic about open source, machine and deep learning.
@@ -41,8 +40,7 @@ links:
     url: /featured
   - title: Categories
     url: /categories
-  - title: About
-    url: /about
+
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/India

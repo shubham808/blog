@@ -84,9 +84,9 @@ int main()
 	a.set_labels(labels);
     cout<<"Training Start..."<<endl;
 	a.train();
-    /* Press CTRL+C before training is complete. Another way to stop training 
-    is to pass a callback that will trigger can trigger a signal.
-    \*/
+    // Press CTRL+C before training is complete. Another way to stop training 
+    //is to pass a callback that will trigger can trigger a signal.
+    
     // Here you can use the pre-trained model. For example we can apply on test data, serialize the model etc.
     cout<<"Resuming Training"<<endl;
     a.continue_train();
