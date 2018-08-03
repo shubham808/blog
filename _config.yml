@@ -111,7 +111,7 @@ prose:
           element: "multiselect"
           label: "Add categories"
           placeholder: "Choose categories"
-          value: personal
+          value: blog
           options:
             - name: "Weekly updates"
               value: weekly_updates
