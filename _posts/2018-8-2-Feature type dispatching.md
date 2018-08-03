@@ -8,6 +8,7 @@ tags: []
 comments: true
 imagefeature:
 share: true
+featured: true
 ---
 
 
