@@ -19,7 +19,7 @@ The previous idea was to have different callbacks like ```on_next```, ```on_paus
 
 ### Implementation details:
 
-```CIterativeMachine``` is a mixin class. This means it can inherit from some other class which is passed to it through a template argument to its constructors. Iterative models will now inherit from ```CIterativeMachine<CMockMachine>``` instead of being a direct subclass of ```CMockMachine```.
+The ```CIterativeMachine``` is a mixin class. This means it can inherit from some other class which is passed to it through a template argument to its constructors. Iterative models will now inherit from ```CIterativeMachine<CMockMachine>``` instead of being a direct subclass of ```CMockMachine```.
 ##### data members:
 - ```m_current_iteration```: The current iteration count.
 - ```m_max_iteration```: Maximum number of iterations allowed.
@@ -32,7 +32,8 @@ The previous idea was to have different callbacks like ```on_next```, ```on_paus
 
 ### Example:
 Below is a cpp example of a fake iterative model. 
-```c++
+```
+C++
 #include <shogun/base/init.h>
 #include <shogun/base/some.h>
 #include <shogun/labels/BinaryLabels.h>
@@ -95,7 +96,7 @@ int main()
 
 There are two ways to Prematurely stop an algorithm. The user can press ```CTRL+C``` or the user can write a callback method that will trigger a signal. For more details on second method see [this patch](https://github.com/shogun-toolbox/shogun/pull/4293). From python the code will look like:
 
-```Python
+{% highlight <Python> %}
 from shogun import Perceptron
 Perceptron.train(feats)
 # Press CTRL+C and you will see something like
@@ -103,7 +104,8 @@ Perceptron.train(feats)
 # Type "C"
 # Perform operations like apply on test data, save current model etc
 Perceptron.continue_train()
-```
+{% endhighlight %}
+
 ### Applying Iterative Machine to more Algorithms:
 
 To use the features of ```CIterativeMachine``` with a new Algorithm we can make the following changes:
