@@ -96,7 +96,7 @@ int main()
 
 There are two ways to Prematurely stop an algorithm. The user can press ```CTRL+C``` or the user can write a callback method that will trigger a signal. For more details on second method see [this patch](https://github.com/shogun-toolbox/shogun/pull/4293). From python the code will look like:
 
-{% highlight <Python> %}
+{% highlight Python %}
 from shogun import Perceptron
 Perceptron.train(feats)
 # Press CTRL+C and you will see something like
