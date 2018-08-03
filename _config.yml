@@ -1,7 +1,7 @@
-title:            RAVEN
-description:      "Saloni's blog"
+title:            NOTEPAD
+description:      "Shubham's blog"
 logo:             logo.png
-disqus_shortname: raven26
+disqus_shortname:
 share:            true
 dropcap:			true
 # Change url to your domain. Leave localhost server or blank when working locally.
@@ -11,18 +11,18 @@ url:        	  /blog
 
 # Owner/author information
 owner:
-  name:           Saloni Rajeev Kumar
+  name:           Shubham Shukla
   avatar:         me.jpg
-  email:          salonirk11@gmail.com
+  email:          shubhamshukla1197@gmail.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Enthusiastic about open source, machine and deep learning.
   # Social networking links used in footer. Update and remove as you like.
-  twitter:        saloni_kumar26
-  facebook:       saloni.kumar2
-  github:         salonirk11
+  twitter:
+  facebook:
+  github:         shubham808
   instagram:
   # For Google Authorship https://plus.google.com/authorship
-  google_plus:    +SaloniRajeevKumar
+  google_plus:
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:   UA-39365944-7
@@ -71,8 +71,8 @@ kramdown:
 
 prose:
   rooturl: '_posts'
-  siteurl: 'https://github.com/salonirk11/blog'
-  relativeLinks: 'https://github.com/salonirk11/blog/links.jsonp'
+  siteurl: 'https://github.com/shubham808/blog'
+  relativeLinks: 'https://github.com/shubham808/blog/links.jsonp'
   media: 'images'
   metadata:
     _posts:
@@ -113,19 +113,11 @@ prose:
           placeholder: "Choose categories"
           value: personal
           options:
-            - name: "Personal"
-              value: personal
-            - name: "Linux"
-              value: linux
-            - name: "Machine Learning"
-              value: machinelearning
-            - name: "Deep Learning"
-              value: deeplearning
-            - name: "Python"
-              value: python
-            - name: "Raspberries"
-              value: raspberries
-          alterable: true
+            - name: "Weekly updates"
+              value: weekly_updates
+            - name: "Blog"
+              value: blog
+           alterable: true
       - name: "tags"
         field:
           element: "text"
