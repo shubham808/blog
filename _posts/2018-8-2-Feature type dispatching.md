@@ -13,14 +13,17 @@ featured: true
 
 
 ### Overview:
-Most algorithms in shogun do not behave in a generic manner in the sense that they are *type dependent*. The ```train``` method can accept any type of features as a ```CFeatures*``` pointer however it is later assumed that the features provided are of a particular type. We intorduced feature dispatching to enable this feature in a more automated way. Some algorithms (like ```CLDA```) already try to take care of types and implement a templated ```train_machine```. We take that idea and give its own space in shogun [here](https://github.com/shogun-toolbox/shogun/tree/develop/src/shogun/machine/FeatureDispatcherCRTP.h).  
+Most algorithms in shogun do not behave in a generic manner in the sense that they are *type dependent*. The ```train``` method can accept any type of features as a ```CFeatures*``` pointer however it is later assumed that the features provided are of a particular type. We intorduced feature dispatching to enable this feature in a more automated way. Some algorithms (like ```CLDA```) already try to take care of types and implement a templated ```train_machine```. We take that idea and give its own space in shogun [here](https://github.com/shogun-toolbox/shogun/blob/develop/src/shogun/machine/FeatureDispatchCRTP.h).  
 
 ### Motivation:
-Least Angle Regression is an Iterative Algorithm that tries to stay type independent. This is a good idea in cases where small feature matrix can be scaled down to ```float32_t``` type. Also to implement our Iterative Machine code style here was a problem since it meant having to perform type dispatching in *every iteration*. This is obviously redundant, even if its cheap it is not a good code style. The idea here is to dispatch feature type in base class (```CMachine```) so that when we start training loop, types are already taken care of. 
+Least Angle Regression is an Iterative Algorithm that tries to stay type independent. This is a good idea in cases where small feature matrix can be scaled down to ```float32_t``` type. Also to implement our Iterative Machine code style here was a problem since it meant having to perform type dispatching in *every iteration*. This is obviously redundant, even if its cheap it is not a good code style. The idea here is to dispatch feature type in base class (```CMachine```) so that when we start training loop, types are already taken care of.  
 
-### Implementation details and Design choice:
+An idea to solve such a problem can be using a hiearchy and then making a child class aware of templated types. Other subclasses can overload virtual methods. The idea will not work because we cannot have virtual methods that are templated. Once the run-time system figured out it would need to call a templatized virtual function, compilation is all done and the compiler cannot generate the appropriate instance anymore.  
+Hence, mixin is a better idea here.
 
-The ```CDenseRealDispatch``` is a class to dispatch dense feature types in ```FeatureDispatchCRTP.h```. It is a mixin class that takes two template arguments. The first argument is the class itself and the second argument is the orignal base class. This is possible due to the concept of Curiously Recursive Template Pattern(```CRTP```). ```C++``` is lazy, this means a pointer for a class is available to use even *before*  it is declared. In other words, a call to a member method of such a class does not need to be instantiated until the function is actually *called*.
+### Implementation details and Design choice:  
+The ```CDenseRealDispatch``` is a class to dispatch dense feature types in ```FeatureDispatchCRTP.h```. It is a mixin class that takes two template arguments. First is all the members of the base class hence we definitely need to inherit that. The second is *something* to bring the templated version of ```train_machine``` in scope *up* the inheritance ladder. Hence we inherit it from the subclass itself. This is possible due to the concept of Curiously Recursive Template Pattern(```CRTP```). ```C++``` is lazy, this means a pointer for a class is available to use even *before*  it is declared. In other words, a call to a member method of such a class does not need to be instantiated until the function is actually *called*. This is diffrent from a normal mixin approach that uses a single template argument because not all the methods can be collected with the help of a single class.  
+ 
 Classes(like ```CLDA```, ```CLeastAngleRegression```) which support dynamic dispatching via the mixin will inherit from ```CDenseRealDispatch<CMockModel, CBaseMachine>``` instead of directly inheriting from ```CBaseMachine```.
 
 ##### Methods:
@@ -102,10 +105,9 @@ This is then tested with a few feature types for each dispatcher.
 To implement dense dispatching in more algorithm we can make the following changes:
 - Port the ```train_machine``` call to its templated version ```train_machine_templated```. This can be a bit tricky and involves making the implementation fully templated and making sure the dispatched types are respected.
 - Inherit from the mixin instead of directly inheriting from base class.
-```diff
-- class CMockModel : public CMockMachine
-+ class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
-```
+> - class CMockModel : public CMockMachine  
+> + class CMockModel : public CDenseRealDispatch<CMockModel, CMockMachine>
+
 - Make the class a friend of the Dispatcher. This is done to bring ```train_machine_templated``` into the dispatcher's scope.
 
 {% highlight C++ %}

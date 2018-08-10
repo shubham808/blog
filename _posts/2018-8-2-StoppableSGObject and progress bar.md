@@ -1,6 +1,6 @@
 ---
 layout: post
-title: StoppableSGObject class
+title: StoppableSGObject class and progress bar
 description:
 modified:
 category: GSOC'18
