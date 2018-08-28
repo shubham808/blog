@@ -6,7 +6,7 @@ modified:
 category: GSOC'18
 tags: []
 comments: true
-imagefeature:
+imagefeature: fhs.png
 share: true
 featured: true
 ---
